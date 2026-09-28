@@ -12,7 +12,10 @@ protected:
 	CPoint Point = CPoint(-100, -100);
 public:
 	CPoint GetPoint() { return Point; }
-	void SetPoint(CPoint p) { Point = p; }
+	void SetPoint(CPoint p) { 
+		Point = p;
+		SetModifiedFlag(); // 문서가 수정되었음을 표시
+	}
 
 protected: // serialization에서만 만들어집니다.
 	CG26W03MFCDoc() noexcept;
