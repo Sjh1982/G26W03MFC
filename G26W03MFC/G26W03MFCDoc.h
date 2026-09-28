@@ -9,12 +9,15 @@
 class CG26W03MFCDoc : public CDocument
 {
 protected:
-	CPoint Point = CPoint(-100, -100);
+	CArray<CPoint, CPoint> Points;
 public:
-	CPoint GetPoint() { return Point; }
-	void SetPoint(CPoint p) { 
-		Point = p;
-		SetModifiedFlag(); // 문서가 수정되었음을 표시
+	int GetPointsCount() { return (int)Points.GetCount(); }
+
+	CPoint GetPoint(int index) { return Points[index]; }
+
+	void AddPoint(CPoint p) {
+		Points.Add(p);
+		SetModifiedFlag();
 	}
 
 protected: // serialization에서만 만들어집니다.
